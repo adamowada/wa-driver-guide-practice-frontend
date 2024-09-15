@@ -6,7 +6,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
   { name: 'Create New Questions', href: '/' },
-  { name: 'Review Seen Questions', href: '#' },
+  { name: 'Review Seen Questions', href: '/review' },
 ]
 
 export default function Header() {

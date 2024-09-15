@@ -1,29 +1,32 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from '@/components/Header';
 import Question from '@/components/Question';
 
-export default function Home() {
+export default function Review() {
   const [questions, setQuestions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleCreateClick = async () => {
-    if (questions.length > 0) {
-      setQuestions([]);
-    }
+  useEffect(() => {
     setIsLoading(true);
-    try {
-      const response = await axios.post('/api/create-questions');
-      const data = response.data;
-      setQuestions(data.questions);
-    } catch (error) {
-      console.error('Error creating questions:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+
+    const getQuestions = async () => {
+      try {
+        const response = await axios.get('/api/get-questions');
+        const data = response.data;
+        data.questions.reverse();
+        setQuestions(data.questions);
+      } catch (error) {
+        console.error('Error fetching questions:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    getQuestions();
+  }, []);
 
   return (
     <>
@@ -32,30 +35,10 @@ export default function Home() {
         <header>
           <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
             <h1 className='text-3xl font-bold leading-tight tracking-tight text-gray-900'>
-              Use ChatGPT to Create New
-              Questions For You
+              Review Previously Seen Questions
             </h1>
-          </div>
-        </header>
-        <main>
-          <div className='mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8'>
-            {questions.map((questionData, index) => (
-              <Question
-                key={index}
-                questionData={questionData}
-                questionNumber={index + 1}
-              />
-            ))}
-          </div>
-          <div className='flex justify-center mb-2'>
-            <button
-              onClick={handleCreateClick}
-              disabled={isLoading}
-              className={`px-6 py-3 bg-indigo-600 text-white text-lg font-semibold rounded-md hover:bg-indigo-700 ${
-                isLoading ? 'opacity-50 cursor-not-allowed' : ''
-              }`}
-            >
-              {isLoading ? (
+            {isLoading && (
+              <div className='mt-4 mx-auto max-w-3xl px-6 py-3 bg-indigo-600 text-white text-lg font-semibold rounded-md'>
                 <div className='flex items-center'>
                   <svg
                     className='animate-spin h-5 w-5 mr-3 text-white'
@@ -77,13 +60,22 @@ export default function Home() {
                       d='M4 12a8 8 0 018-8v8z'
                     ></path>
                   </svg>
-                  Generating Questions... <br /> 
+                  Retrieving Questions... <br />
                   This may take up to 60 seconds
                 </div>
-              ) : (
-                'Create 5 New Questions'
-              )}
-            </button>
+              </div>
+            )}
+          </div>
+        </header>
+        <main>
+          <div className='mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8'>
+            {questions.map((questionData, index) => (
+              <Question
+                key={index}
+                questionData={questionData}
+                questionNumber={index + 1}
+              />
+            ))}
           </div>
         </main>
       </div>
