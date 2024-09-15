@@ -35,7 +35,7 @@ export default function Review() {
         <header>
           <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
             <h1 className='text-3xl font-bold leading-tight tracking-tight text-gray-900'>
-              Review Previously Seen Questions
+              复习之前看到的问题
             </h1>
             {isLoading && (
               <div className='mt-4 mx-auto max-w-3xl px-6 py-3 bg-indigo-600 text-white text-lg font-semibold rounded-md'>
@@ -60,8 +60,8 @@ export default function Review() {
                       d='M4 12a8 8 0 018-8v8z'
                     ></path>
                   </svg>
-                  Retrieving Questions... <br />
-                  This may take up to 60 seconds
+                  正在检索问题... <br />
+                  这可能需要最多60秒
                 </div>
               </div>
             )}

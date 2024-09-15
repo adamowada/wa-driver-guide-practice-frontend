@@ -5,8 +5,8 @@ import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { name: 'Create New Questions', href: '/' },
-  { name: 'Review Seen Questions', href: '/review' },
+  { name: '创建新问题', href: '/' },
+  { name: '复习已看过的问题', href: '/review' },
 ]
 
 export default function Header() {
