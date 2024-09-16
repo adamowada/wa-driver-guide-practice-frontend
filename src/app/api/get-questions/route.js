@@ -6,7 +6,7 @@ import axios from 'axios';
 export async function GET(request) {
   try {
     const response = await axios.get(
-      'https://wa-driver-guide-practice-api.vercel.app/api/get-questions'
+      `https://wa-driver-guide-practice-api.vercel.app/api/get-questions?timestamp=${Date.now()}`
     );
 
     const res = NextResponse.json(response.data);

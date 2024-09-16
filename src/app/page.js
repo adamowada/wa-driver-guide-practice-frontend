@@ -80,7 +80,7 @@ export default function Home() {
                   这可能需要最多60秒
                 </div>
               ) : (
-                '创建5个新问题'
+                '创建10个新问题'
               )}
             </button>
           </div>
