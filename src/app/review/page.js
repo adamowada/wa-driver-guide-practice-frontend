@@ -14,7 +14,11 @@ export default function Review() {
 
     const getQuestions = async () => {
       try {
-        const response = await axios.get('/api/get-questions');
+        const response = await axios.get('/api/get-questions', {
+          headers: {
+            'Cache-Control': 'no-store',
+          },
+        });
         const data = response.data;
         data.questions.reverse();
         setQuestions(data.questions);
