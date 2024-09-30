@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import Header from '@/components/Header';
 import Question from '@/components/Question';
@@ -9,28 +9,26 @@ export default function Review() {
   const [questions, setQuestions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
+  const handleRetrieveClick = async () => {
+    if (questions.length > 0) {
+      setQuestions([]);
+    }
     setIsLoading(true);
-
-    const getQuestions = async () => {
-      try {
-        const response = await axios.get('/api/get-questions', {
-          headers: {
-            'Cache-Control': 'no-store',
-          },
-        });
-        const data = response.data;
-        data.questions.reverse();
-        setQuestions(data.questions);
-      } catch (error) {
-        console.error('Error fetching questions:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    getQuestions();
-  }, []);
+    try {
+      const response = await axios.get('/api/get-questions', {
+        headers: {
+          'Cache-Control': 'no-store',
+        },
+      });
+      const data = response.data;
+      data.questions.reverse();
+      setQuestions(data.questions);
+    } catch (error) {
+      console.error('Error fetching questions:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <>
@@ -41,8 +39,27 @@ export default function Review() {
             <h1 className='text-3xl font-bold leading-tight tracking-tight text-gray-900'>
               复习之前看到的问题
             </h1>
-            {isLoading && (
-              <div className='mt-4 mx-auto max-w-3xl px-6 py-3 bg-indigo-600 text-white text-lg font-semibold rounded-md'>
+          </div>
+        </header>
+        <main>
+          <div className='mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8'>
+            {questions.map((questionData, index) => (
+              <Question
+                key={index}
+                questionData={questionData}
+                questionNumber={index + 1}
+              />
+            ))}
+          </div>
+          <div className='flex justify-center mb-2'>
+            <button
+              onClick={handleRetrieveClick}
+              disabled={isLoading}
+              className={`px-6 py-3 bg-indigo-600 text-white text-lg font-semibold rounded-md hover:bg-indigo-700 ${
+                isLoading ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
+            >
+              {isLoading ? (
                 <div className='flex items-center'>
                   <svg
                     className='animate-spin h-5 w-5 mr-3 text-white'
@@ -67,19 +84,10 @@ export default function Review() {
                   正在检索问题... <br />
                   这可能需要最多60秒
                 </div>
-              </div>
-            )}
-          </div>
-        </header>
-        <main>
-          <div className='mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8'>
-            {questions.map((questionData, index) => (
-              <Question
-                key={index}
-                questionData={questionData}
-                questionNumber={index + 1}
-              />
-            ))}
+              ) : (
+                '检索之前的问题'
+              )}
+            </button>
           </div>
         </main>
       </div>
