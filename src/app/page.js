@@ -32,7 +32,7 @@ export default function Home() {
         <header>
           <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
             <h1 className='text-3xl font-bold leading-tight tracking-tight text-gray-900'>
-              使用ChatGPT为你生成新问题
+              Generate Questions Using ChatGPT
             </h1>
           </div>
         </header>
@@ -76,11 +76,11 @@ export default function Home() {
                       d='M4 12a8 8 0 018-8v8z'
                     ></path>
                   </svg>
-                  正在生成问题... <br />
-                  这可能需要最多60秒
+                  Generating Questions... <br />
+                  This May Take Up to 60 Seconds
                 </div>
               ) : (
-                '创建10个新问题'
+                'Create 5 New Questions'
               )}
             </button>
           </div>

@@ -5,8 +5,8 @@ import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { name: '创建新问题', href: '/' },
-  { name: '复习已看过的问题', href: '/review' },
+  { name: 'Create New Questions', href: '/' },
+  { name: 'Review Previously Seen Questions', href: '/review' },
 ]
 
 export default function Header() {
@@ -17,7 +17,7 @@ export default function Header() {
       <nav aria-label="Global" className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">学习驾驶！</span>
+            <span className="sr-only">Learn to Drive!</span>
             <img alt="" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" className="h-8 w-auto" />
           </a>
         </div>
