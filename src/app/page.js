@@ -9,7 +9,7 @@ export default function Home() {
   const [questions, setQuestions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleCreateClick = async () => {
+  const handleCreate = async () => {
     if (questions.length > 0) {
       setQuestions([]);
     }
@@ -17,7 +17,8 @@ export default function Home() {
     try {
       const response = await axios.post('/api/create-questions');
       const data = response.data;
-      setQuestions(data.questions);
+      setQuestions(data[0].questions);
+      console.log("The last prompt was:\n\n", data[1])
     } catch (error) {
       console.error('Error creating questions:', error);
     } finally {
@@ -40,7 +41,7 @@ export default function Home() {
             </h1>
             {/* Button goes here so it sits in the same row */}
             <button
-              onClick={handleCreateClick}
+              onClick={handleCreate}
               disabled={isLoading}
               className={`
                 px-6 py-2 bg-indigo-500 text-white text-xl font-semibold rounded-md 
