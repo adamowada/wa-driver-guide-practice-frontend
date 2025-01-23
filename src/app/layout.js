@@ -1,8 +1,8 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "学习驾驶！",
-  description: "使用ChatGPT学习华盛顿州知识测试",
+  title: "Learn to Drive!",
+  description: "Use ChatGPT to Study for the Washington Knowledge Exam",
 };
 
 export default function RootLayout({ children }) {

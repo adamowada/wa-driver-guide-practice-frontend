@@ -37,7 +37,7 @@ export default function Review() {
         <header>
           <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
             <h1 className='text-3xl font-bold leading-tight tracking-tight text-gray-900'>
-              复习之前看到的问题
+              Review Previously Seen Questions
             </h1>
           </div>
         </header>
@@ -81,11 +81,11 @@ export default function Review() {
                       d='M4 12a8 8 0 018-8v8z'
                     ></path>
                   </svg>
-                  正在检索问题... <br />
-                  这可能需要最多60秒
+                  Retrieving Questions...<br />
+                  This May Take Up to 60 Seconds
                 </div>
               ) : (
-                '检索之前的问题'
+                'Retrieve Previous Questions'
               )}
             </button>
           </div>
