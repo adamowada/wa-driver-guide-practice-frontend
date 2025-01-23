@@ -15,7 +15,7 @@ export default function Review() {
     }
     setIsLoading(true);
     try {
-      const response = await axios.get('/api/get-questions', {
+      const response = await axios.get(`/api/get-questions?random=${Date.now()}`, {
         headers: {
           'Cache-Control': 'no-store',
         },
@@ -34,7 +34,7 @@ export default function Review() {
     <div className='min-h-screen flex flex-col bg-white'>
       <Header />
       <div className='flex-1 py-10 bg-gray-100 w-full max-w-7xl mx-auto'>
-        <header>
+        <header className='px-4 sm:px-6 lg:px-8 mb-4'>
           <div className='flex items-center justify-between'>
             <h1 className='text-3xl font-bold leading-tight tracking-tight text-gray-900'>
               Review Previously Seen Questions
@@ -69,7 +69,6 @@ export default function Review() {
                     ></path>
                   </svg>
                   Retrieving Questions...<br />
-                  This May Take Up to 60 Seconds
                 </div>
               ) : (
                 'Retrieve Previous Questions'

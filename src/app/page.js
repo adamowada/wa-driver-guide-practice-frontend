@@ -71,7 +71,6 @@ export default function Home() {
                     ></path>
                   </svg>
                   Generating Questions... <br />
-                  This May Take Up to 60 Seconds
                 </div>
               ) : (
                 'Create 5 New Questions'
