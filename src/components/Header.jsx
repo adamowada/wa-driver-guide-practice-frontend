@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import Image from 'next/image'
 
 const navigation = [
   { name: 'Create New Questions', href: '/' },
@@ -18,7 +19,7 @@ export default function Header() {
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Learn to Drive!</span>
-            <img alt="" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" className="h-8 w-auto" />
+            <Image src={"/assets/car.gif"} alt={"car logo"} width={64} height={64} />
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -33,7 +34,7 @@ export default function Header() {
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           {navigation.map((item) => (
-            <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-white">
+            <a key={item.name} href={item.href} className="text-xl font-semibold leading-6 text-white">
               {item.name}
             </a>
           ))}
@@ -44,12 +45,8 @@ export default function Header() {
         <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">学习驾驶！</span>
-              <img
-                alt=""
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                className="h-8 w-auto"
-              />
+              <span className="sr-only">Learn to Drive!</span>
+              <Image src={"/assets/car.gif"} alt={"car logo"} width={64} height={64} />
             </a>
             <button
               type="button"
