@@ -65,7 +65,7 @@ function Question({ questionData, questionNumber }) {
                   className='focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300'
                 />
               </div>
-              <div className='ml-3 text-sm'>
+              <div className='ml-3 text-base'>
                 <label className='font-medium text-gray-700'>
                   {answer.text}
                 </label>
