@@ -18,7 +18,7 @@ export default function Home() {
       const response = await axios.post('/api/create-questions');
       const data = response.data;
       setQuestions(data[0].questions);
-      console.log("The last prompt was:\n\n", data[1])
+      console.log(data[1])
     } catch (error) {
       console.error('Error creating questions:', error);
     } finally {
