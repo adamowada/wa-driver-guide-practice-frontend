@@ -42,7 +42,7 @@ export default function Review() {
             <button
               onClick={handleRetrieveClick}
               disabled={isLoading}
-              className={`px-6 py-3 bg-indigo-500 text-white text-lg font-semibold rounded-md hover:bg-indigo-700 ${
+              className={`px-6 py-2 bg-indigo-500 text-white text-xl font-semibold rounded-md hover:bg-indigo-700 ${
                 isLoading ? 'opacity-50 cursor-not-allowed' : ''
               }`}
             >
