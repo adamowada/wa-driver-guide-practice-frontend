@@ -4,8 +4,7 @@ import axios from 'axios';
 export async function POST(request) {
   try {
     const response = await axios.post(
-      // 'https://wa-driver-guide-practice-api.vercel.app/api/create-questions'
-      'http://127.0.0.1:8000/api/create-questions'
+      'https://wa-driver-guide-practice-api.vercel.app/api/create-questions'
     );
 
     // Create the NextResponse object and set the Cache-Control header

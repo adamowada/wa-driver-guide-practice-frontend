@@ -38,7 +38,6 @@ export default function Home() {
             <h1 className='text-3xl font-bold leading-tight tracking-tight text-gray-900'>
               Generate Questions Using ChatGPT
             </h1>
-
             {/* Button goes here so it sits in the same row */}
             <button
               onClick={handleCreateClick}

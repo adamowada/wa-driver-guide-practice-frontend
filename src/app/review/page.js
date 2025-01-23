@@ -31,31 +31,18 @@ export default function Review() {
   };
 
   return (
-    <>
+    <div className='min-h-screen flex flex-col bg-white'>
       <Header />
-      <div className='py-10'>
+      <div className='flex-1 py-10 bg-gray-100 w-full max-w-7xl mx-auto'>
         <header>
-          <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
+          <div className='flex items-center justify-between'>
             <h1 className='text-3xl font-bold leading-tight tracking-tight text-gray-900'>
               Review Previously Seen Questions
             </h1>
-          </div>
-        </header>
-        <main>
-          <div className='mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8'>
-            {questions.map((questionData, index) => (
-              <Question
-                key={index}
-                questionData={questionData}
-                questionNumber={index + 1}
-              />
-            ))}
-          </div>
-          <div className='flex justify-center mb-2'>
             <button
               onClick={handleRetrieveClick}
               disabled={isLoading}
-              className={`px-6 py-3 bg-indigo-600 text-white text-lg font-semibold rounded-md hover:bg-indigo-700 ${
+              className={`px-6 py-3 bg-indigo-500 text-white text-lg font-semibold rounded-md hover:bg-indigo-700 ${
                 isLoading ? 'opacity-50 cursor-not-allowed' : ''
               }`}
             >
@@ -89,8 +76,19 @@ export default function Review() {
               )}
             </button>
           </div>
+        </header>
+        <main>
+          <div className='mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8'>
+            {questions.map((questionData, index) => (
+              <Question
+                key={index}
+                questionData={questionData}
+                questionNumber={index + 1}
+              />
+            ))}
+          </div>
         </main>
       </div>
-    </>
+    </div>
   );
 }
